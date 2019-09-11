@@ -23,7 +23,6 @@ schedules:
 
 stages:
 - stage: Preview
-  displayName: Preview
   dependsOn: []
   jobs:
     - job: preview
@@ -40,7 +39,6 @@ stages:
               tag: preview-buildtest-ubu-1804
 
 - stage: Latest
-  displayName: Latest
   dependsOn: []
   jobs:
     - job: latest
