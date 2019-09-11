@@ -23,7 +23,7 @@ stages:
       pool:
         name: Hosted Ubuntu 1604
       steps:
-        - template: PowerShell/ModuleBuildTest/DockerPipelineTemplate.yml
+        - template: DockerPipelineTemplate.yml
           parameters:
               containerRegistry: DockerHub
               repository: scrthq/powershell
@@ -36,7 +36,7 @@ stages:
       pool:
         name: Hosted Ubuntu 1604
       steps:
-        - template: PowerShell/ModuleBuildTest/DockerPipelineTemplate.yml
+        - template: DockerPipelineTemplate.yml
           parameters:
               containerRegistry: DockerHub
               repository: scrthq/powershell
