@@ -1,3 +1,10 @@
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: SCRT-HQ/AzurePipelineTemplates
+      endpoint: Github
+
 trigger:
   branches:
     include:
@@ -23,7 +30,7 @@ stages:
       pool:
         name: Hosted Ubuntu 1604
       steps:
-        - template: DockerPipelineTemplate.yml
+        - template: BuildTestDeployDocker/azure-pipelines.yml@templates
           parameters:
               containerRegistry: DockerHub
               repository: scrthq/powershell
@@ -36,7 +43,7 @@ stages:
       pool:
         name: Hosted Ubuntu 1604
       steps:
-        - template: DockerPipelineTemplate.yml
+        - template: BuildTestDeployDocker/azure-pipelines.yml@templates
           parameters:
               containerRegistry: DockerHub
               repository: scrthq/powershell
