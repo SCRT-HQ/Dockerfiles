@@ -22,7 +22,7 @@ schedules:
       - master
 
 stages:
-- stage: preview
+- stage: Preview
   displayName: Preview
   dependsOn: []
   jobs:
@@ -39,7 +39,7 @@ stages:
               testFile: PowerShell/ModuleBuildTest/TestPreview.Dockerfile
               tag: preview-buildtest-ubu-1804
 
-- stage: latest
+- stage: Latest
   displayName: Latest
   dependsOn: []
   jobs:
