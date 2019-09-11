@@ -22,11 +22,12 @@ schedules:
       - master
 
 stages:
-- stage: docker
-  displayName: Build Docker Images
+- stage: preview
+  displayName: Preview
+  dependsOn: []
   jobs:
     - job: preview
-      displayName: Build Preview Image
+      displayName: Build Test Push
       pool:
         name: Hosted Ubuntu 1604
       steps:
@@ -38,8 +39,12 @@ stages:
               testFile: PowerShell/ModuleBuildTest/TestPreview.Dockerfile
               tag: preview-buildtest-ubu-1804
 
+- stage: latest
+  displayName: Latest
+  dependsOn: []
+  jobs:
     - job: latest
-      displayName: Build Latest Image
+      displayName: Build Test Push
       pool:
         name: Hosted Ubuntu 1604
       steps:
