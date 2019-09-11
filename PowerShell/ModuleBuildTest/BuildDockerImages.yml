@@ -1,0 +1,45 @@
+trigger:
+  branches:
+    include:
+      - refs/heads/master
+  paths:
+    include:
+      - PowerShell/ModuleBuildTest/*
+
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build
+  always: true
+  branches:
+    include:
+      - refs/heads/master
+
+stages:
+- stage: docker
+  displayName: Build Docker Images
+  jobs:
+    - job: preview
+      displayName: Build Preview Image
+      pool:
+        name: Hosted Ubuntu 1604
+      steps:
+        - template: PowerShell/ModuleBuildTest/DockerPipelineTemplate.yml
+          parameters:
+              containerRegistry: DockerHub
+              repository: scrthq/powershell
+              dockerFile: PowerShell/ModuleBuildTest/Preview.Dockerfile
+              testFile: PowerShell/ModuleBuildTest/TestPreview.Dockerfile
+              tag: preview-buildtest-ubu-1804
+
+    - job: latest
+      displayName: Build Latest Image
+      pool:
+        name: Hosted Ubuntu 1604
+      steps:
+        - template: PowerShell/ModuleBuildTest/DockerPipelineTemplate.yml
+          parameters:
+              containerRegistry: DockerHub
+              repository: scrthq/powershell
+              dockerFile: PowerShell/ModuleBuildTest/Latest.Dockerfile
+              testFile: PowerShell/ModuleBuildTest/TestLatest.Dockerfile
+              tag: latest-buildtest-ubu-1804
