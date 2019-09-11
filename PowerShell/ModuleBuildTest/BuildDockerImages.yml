@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - refs/heads/master
+      - master
   paths:
     include:
       - PowerShell/ModuleBuildTest/*
@@ -12,7 +12,7 @@ schedules:
   always: true
   branches:
     include:
-      - refs/heads/master
+      - master
 
 stages:
 - stage: docker
