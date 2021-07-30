@@ -9,6 +9,7 @@ trigger:
   branches:
     include:
       - master
+      - main
   paths:
     include:
       - PowerShell/ModuleBuildTest/*
@@ -19,7 +20,7 @@ schedules:
   always: true
   branches:
     include:
-      - master
+      - main
 
 stages:
 - stage: Preview
@@ -52,7 +53,7 @@ stages:
               containerRegistry: DockerHub
               repository: scrthq/powershell
               dockerFile: PowerShell/ModuleBuildTest/Preview-NoEntryPoint.Dockerfile
-              testFile: PowerShell/ModuleBuildTest/TestPreview.Dockerfile
+              testFile: PowerShell/ModuleBuildTest/TestPreview-NoEntryPoint.Dockerfile
               tag: preview-noentrypoint-buildtest-ubu-2004
 
 - stage: Latest
