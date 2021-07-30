@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:preview-ubuntu-18.04 as base
+FROM mcr.microsoft.com/powershell:preview-ubuntu-20.04 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,7 +23,7 @@ RUN wget https://github.com/GitTools/GitVersion/releases/download/5.0.1/GitVersi
     && ln -s /GitVersion/gitversion /usr/bin/gitversion
 
 LABEL maintainer="nferrell"
-LABEL description="Ubuntu 18.04 for pwsh-preview module testing in CI"
+LABEL description="Ubuntu 20.04 for pwsh-preview module testing in CI"
 LABEL vendor="scrthq"
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]

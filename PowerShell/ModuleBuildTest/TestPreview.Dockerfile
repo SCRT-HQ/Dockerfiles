@@ -1,4 +1,4 @@
-FROM scrthq/powershell:preview-buildtest-ubu-1804
+FROM scrthq/powershell:preview-buildtest-ubu-2004
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 COPY ["PowerShell/ModuleBuildTest/*", "/source/"]
 WORKDIR /source

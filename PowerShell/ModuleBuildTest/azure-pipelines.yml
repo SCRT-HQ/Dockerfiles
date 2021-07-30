@@ -28,7 +28,7 @@ stages:
     - job: preview
       displayName: Build Test Push
       pool:
-        name: Hosted Ubuntu 1604
+        vmImage: 'ubuntu-latest'
       steps:
         - template: BuildTestDeployDocker/azure-pipelines.yml@templates
           parameters:
@@ -36,7 +36,24 @@ stages:
               repository: scrthq/powershell
               dockerFile: PowerShell/ModuleBuildTest/Preview.Dockerfile
               testFile: PowerShell/ModuleBuildTest/TestPreview.Dockerfile
-              tag: preview-buildtest-ubu-1804
+              tag: preview-buildtest-ubu-2004
+
+- stage: PreviewNoEntrypoint
+  displayName: Preview (No Entrypoint)
+  dependsOn: []
+  jobs:
+    - job: previewNoEntrypoint
+      displayName: Build Test Push
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - template: BuildTestDeployDocker/azure-pipelines.yml@templates
+          parameters:
+              containerRegistry: DockerHub
+              repository: scrthq/powershell
+              dockerFile: PowerShell/ModuleBuildTest/Preview-NoEntryPoint.Dockerfile
+              testFile: PowerShell/ModuleBuildTest/TestPreview.Dockerfile
+              tag: preview-noentrypoint-buildtest-ubu-2004
 
 - stage: Latest
   dependsOn: []
@@ -44,7 +61,7 @@ stages:
     - job: latest
       displayName: Build Test Push
       pool:
-        name: Hosted Ubuntu 1604
+        vmImage: 'ubuntu-latest'
       steps:
         - template: BuildTestDeployDocker/azure-pipelines.yml@templates
           parameters:
@@ -52,4 +69,4 @@ stages:
               repository: scrthq/powershell
               dockerFile: PowerShell/ModuleBuildTest/Latest.Dockerfile
               testFile: PowerShell/ModuleBuildTest/TestLatest.Dockerfile
-              tag: latest-buildtest-ubu-1804
+              tag: latest-buildtest-ubu-2004
