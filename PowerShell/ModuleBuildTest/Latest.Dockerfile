@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     git \
     wget \
     mono-complete \
-    libcurl3 \
+    libcurl4 \
     unzip \
     zip \
     --no-install-recommends \
