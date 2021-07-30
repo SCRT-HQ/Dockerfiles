@@ -6,4 +6,5 @@
     psake             = '4.8.0'
     Pester            = '4.9.0'
     PSScriptAnalyzer  = '1.18.2'
+    PSDepend          = '0.3.2'
 }
